@@ -1,6 +1,6 @@
 # H.I.V.E: 1.2.0 BETA
 Home Assistant Intergrated Virtual Enviroment
-http://hyphengroup.github.io/hive
+http://hyphengroup.github.io/thehiveproject
 May Not work on MacOS Catalina and later. 
 * Install the dependencies in a virtual environment (using conda or virtualenv) to avoid any issues. Use either pip2 or pip3 for python2 and python3 respectively.
 
