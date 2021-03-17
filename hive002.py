@@ -52,12 +52,6 @@ def run_hive():
         talk(info)
     elif 'joke' in command:
         talk(pyjokes.get_joke())
-    elif 'open project 65' in command:
-        talk('Access Denied')
-    elif 'admin override' in command:
-        talk('Insufficient Permissions, Request Denied!')
-    elif 'status report' in command:
-        talk('All Systems Operational Sir!')
     elif 'hive' in command:
         talk('Yes, sir?')
     elif 'shut down' in command:
