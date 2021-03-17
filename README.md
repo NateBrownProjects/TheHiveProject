@@ -1,4 +1,4 @@
-# H.I.V.E: 0.0.1 BETA #
+# H.I.V.E: 0.0.2 BETA #
 Home-Assistant Intergrated Virtual Enviroment
 https://natebrownprojects.github.io/TheHiveProject/
 
@@ -27,7 +27,7 @@ Windows: ``` TheHiveProject\Scripts\activate```
 
 ## Setup Step 2
 
-```python hive001.py```
+```python hive002.py```
 
 
 
