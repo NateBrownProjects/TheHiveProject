@@ -17,11 +17,11 @@ engine.setProperty('voice', voices[0]  .id)
 def talk(text):
     engine.say(text)
     engine.runAndWait()
-
+print('How can i help you Sir?')
 
 def take_command():
     try:
-        print('How can i help you Sir?')
+
         with sr.Microphone() as source:
             voice = listener.listen(source)
             command = listener.recognize_google(voice)
@@ -46,11 +46,18 @@ def run_hive():
         talk('Current time is ' + time)
     elif 'who is' in command:
         person = command.replace('who is', '')
-        info = wikipedia.summary(person, 1)
+        info = wikipedia.summary(person, 1, auto_suggest=False)
+
         print(info)
         talk(info)
     elif 'joke' in command:
         talk(pyjokes.get_joke())
+    elif 'open project 65' in command:
+        talk('Access Denied')
+    elif 'admin override' in command:
+        talk('Insufficient Permissions, Request Denied!')
+    elif 'status report' in command:
+        talk('All Systems Operational Sir!')
     elif 'hive' in command:
         talk('Yes, sir?')
     elif 'shut down' in command:
@@ -64,6 +71,20 @@ def run_hive():
         talk('Thank you for using hive! Goodbye!')
         print('Thank you for using H.I.V.E!')
         exit()
+    elif 'awesome thanks' in command:
+        talk('Your, Welcome!')
+    elif 'thanks' in command:
+        talk('Ny Pleasure!')
+    elif 'thank you' in command:
+        talk('No Problem!')
+    elif 'awesome' in command:
+        talk('No Problem, is there anything i, can help you, with?')
+    elif ' no' in command:
+         talk('ok!')
+    elif 'yes' in command:
+        talk('Ok, what is it?')
+    elif 'how are you' in command:
+        talk('Im Great, How are you!?')
     elif 'you still there' in command:
         talk('Yes Sir, i am ready for your command!')
     elif 'who are you' in command:
