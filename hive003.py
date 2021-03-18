@@ -1,15 +1,17 @@
-# H.I.V.E V.0.0.1 BETA: Home-Assistant Intergrated Virtual Environment
-#VIEW THE HIVE PROJECT AT HTTPS://natebrownprojects.github.io/TheHiveProject/
-#Copyright: Nate Brown Projects 2021 / Nate Brown 2021 / TheHiveProjectNZ 2021
+# H.I.V.E V.0.0.3 BETA: Home-Assistant Intergrated Virtual Environment
+# #VIEW THE HIVE PROJECT AT HTTPS://natebrownprojects.github.io/TheHiveProject/
+# Copyright: Nate Brown Projects 2021 / Nate Brown 2021 / TheHiveProjectNZ 2021
 import speech_recognition as sr
 import pyttsx3
 import pywhatkit
 import datetime
+from datetime import timedelta
 import wikipedia
 import pyjokes
+from pyttsx3 import Engine
 
 listener = sr.Recognizer()
-engine = pyttsx3.init()
+engine: Engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0]  .id)
 
@@ -17,7 +19,8 @@ engine.setProperty('voice', voices[0]  .id)
 def talk(text):
     engine.say(text)
     engine.runAndWait()
-print('How can i help you Sir?')
+talk('Systems Loading, Welcome to the HIVE.')
+talk('How, can i help, you Sir?')
 
 def take_command():
     try:
@@ -44,6 +47,11 @@ def run_hive():
     elif 'time' in command:
         time = datetime.datetime.now().strftime('%I:%M %p')
         talk('Current time is ' + time)
+    elif 'date' in command:
+        now = datetime.datetime.now()
+        talk("Current date and time : ")
+        talk(now.strftime("%d         %m                %Y"))
+        engine.setProperty("rate", 178)
     elif 'who is' in command:
         person = command.replace('who is', '')
         info = wikipedia.summary(person, 1, auto_suggest=False)
@@ -52,6 +60,8 @@ def run_hive():
         talk(info)
     elif 'joke' in command:
         talk(pyjokes.get_joke())
+    elif 'status report' in command:
+        talk('All Systems Operational Sir!')
     elif 'hive' in command:
         talk('Yes, sir?')
     elif 'shut down' in command:
