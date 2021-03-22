@@ -1,4 +1,4 @@
-# H.I.V.E: 0.1.3 BETA #
+# H.I.V.E: 0.1.4 BETA #
 Home-Assistant Intergrated Virtual Enviroment
 https://natebrownprojects.github.io/TheHiveProject/
 
@@ -27,7 +27,7 @@ Windows: ``` TheHiveProject\Scripts\activate```
 
 ## Setup Step 2
 
-```python hive013.py```
+```python hive014.py```
 
 
 
@@ -44,5 +44,6 @@ Please note that this is a very basic Assistant and will be developed heavily ov
 - Who are you?
 - Play... 
 - Whats the Date today?
-- CAN NOW MANUALLY TYPE IN COMMANDS
+- Manually Type in your Commands
+- CAN NOW USE CALCULATOR using the command: "calculator"
 
