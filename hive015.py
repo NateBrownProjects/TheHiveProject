@@ -1,4 +1,4 @@
-# H.I.V.E V.0.1.4 BETA: Home-Assistant Intergrated Virtual Environment
+# H.I.V.E V.0.1.5 BETA: Home-Assistant Intergrated Virtual Environment
 # #VIEW THE HIVE PROJECT AT HTTPS://natebrownprojects.github.io/TheHiveProject/
 # Copyright: Nate Brown Projects 2021 / Nate Brown 2021 / TheHiveProjectNZ 2021
 import speech_recognition as sr
@@ -155,7 +155,7 @@ def run_hive():
         har = input('How are you?: ')
         talk('You are,,,. ' + har + 'Thats Great,,, ' + 'Have,a great Day!')
     elif 'version' in command
-        talk('I am currently running on Version 0.1.4 as of Monday March 22nd 5:55PM')
+        talk('I am currently running on Version 0.1.5 as of Monday March 22nd 7:05PM')
     else:
         print('Please say the command again.')
         input('Please Type Your Command: ')
