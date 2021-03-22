@@ -1,9 +1,10 @@
-# H.I.V.E: 0.1.4 BETA #
+# H.I.V.E: 0.1.5 BETA #
 Home-Assistant Intergrated Virtual Enviroment
 https://natebrownprojects.github.io/TheHiveProject/
 
 ## Setup Step 1
 Clone this repository using the following command:
+``` cd Documents```
 ``` sudo git clone https://github.com/NateBrownProjects/TheHiveProject```
 
 Then enter the repository by using the following command:
@@ -33,6 +34,9 @@ Windows: ``` TheHiveProject\Scripts\activate```
 
 Please note that this is a very basic Assistant and will be developed heavily over time.
 
+## Webserver##
+To launch H.I.V.E from your browser go to:
+```file:///users/YOURUSER/Documents/The%20H.I.V.E%20Project/localserver/index.html``` And click : ```Run H.I.V.E```
 
 ## Commands you can use! ##
 
