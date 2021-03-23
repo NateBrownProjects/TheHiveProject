@@ -28,16 +28,11 @@ Windows: ``` TheHiveProject\Scripts\activate```
 
 ## Setup Step 2
 
-```python hive014.py```
+```python hive.py```
 
 
 
-Please note that this is a very basic Assistant and will be developed heavily over time.
-
-## Webserver##
-To launch H.I.V.E from your browser go to:
-```file:///users/YOURUSER/Documents/The%20H.I.V.E%20Project/localserver/index.html``` And click : ```Run H.I.V.E```
-
+Please note that this is a very basic Assistant and will be developed heavily over 
 ## Commands you can use! ##
 
 - Tell me a joke!
