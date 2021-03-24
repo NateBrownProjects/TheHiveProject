@@ -154,7 +154,7 @@ def run_hive():
         talk('hello, how are you today?')
         har = input('How are you?: ')
         talk('You are,,,. ' + har + 'Thats Great,,, ' + 'Have,a great Day!')
-    elif 'version' in command
+    elif 'version' in command:
         talk('I am currently running on Version 0.1.5 as of Monday March 22nd 7:05PM')
     else:
         print('Please say the command again.')
