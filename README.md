@@ -10,11 +10,9 @@ Clone this repository using the following command:
 Then enter the repository by using the following command:
 ```cd TheHiveProject/```
 
-Then, install all requirements by using the following command:
-```"pip install -r requirements.txt"```
-
 Then setup a Python Virtual Environment by using the following command:
 ```pip install virtualenv```
+
 
 Then Create the VENV:
 ```TheHiveProject```
@@ -28,6 +26,10 @@ Windows: ``` TheHiveProject\Scripts\activate```
 
 ## Setup Step 2
 
+Then, install all requirements by using the following command:
+```"pip install -r requirements.txt"```
+
+To Run H.I.V.E:
 ```python hive.py```
 
 
