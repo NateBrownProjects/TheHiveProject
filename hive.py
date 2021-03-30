@@ -11,6 +11,7 @@ import wikipedia
 import pyjokes
 import vosk
 import rasa
+import wx
 from pyttsx3 import Engine
 
 listener = sr.Recognizer()
@@ -23,6 +24,104 @@ def talk(text):
 talk('Systems Loading, Welcome to the HIVE.')
 talk('How, can i help, you Sir?')
 print('Communication Log:')
+
+def take_command():
+    opt = input('Would you like to type your command (y/n)?: ')
+# H.I.V.E V.1.0.0 : Home-Assistant Intergrated Virtual Environment
+# #VIEW THE HIVE PROJECT AT HTTPS://natebrownprojects.github.io/TheHiveProject/
+# Copyright: Nate Brown Projects 2021 / Nate Brown 2021 / TheHiveProjectNZ 2021
+import speech_recognition as sr
+import pyttsx3
+import pywhatkit
+import datetime
+import math
+from datetime import timedelta
+import wikipedia
+import pyjokes
+import json
+from pyttsx3 import Engine
+import requests
+from pyowm import OWM
+from pyowm.utils import config
+from pyowm.utils import timestamps
+
+
+listener = sr.Recognizer()
+engine: Engine = pyttsx3.init()
+voices = engine.getProperty('voices')
+engine.setProperty('voice', voices[0]  .id)
+
+## DO NOT EDIT!!! ---------
+def talk(text):
+    engine.say(text)
+    engine.runAndWait()
+talk('Systems Loading, Welcome to the HIVE.')
+talk('How, can i help, you Sir?')
+print('Communication Log:')
+
+
+
+
+## WEATHER CONFIG BELOW:
+
+
+
+
+
+
+def newweather():
+    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
+    mgr = owm.weather_manager()
+    observation = mgr.weather_at_place('Auckland,NZ')
+    w = observation.weather
+    talk(w.detailed_status)
+    pass
+def currentw():
+    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
+    mgr = owm.weather_manager()
+    observation = mgr.weather_at_place('Auckland,NZ')
+    w = observation.weather
+    print(w.detailed_status)
+    talk('The current conditions in Auckland:' + w.detailed_status)
+    pass
+def windw():
+    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
+    mgr = owm.weather_manager()
+    observation = mgr.weather_at_place('Auckland,NZ')
+    w = observation.weather
+    print(w.wind())
+    pass
+
+def tempw():
+    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
+    mgr = owm.weather_manager()
+    observation = mgr.weather_at_place('Auckland,NZ')
+    w = observation.weather
+    print(w.temperature)
+    talk(w.temperature('celsius'))
+
+def cloudw():
+    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
+    mgr = owm.weather_manager()
+    observation = mgr.weather_at_place('Auckland,NZ')
+    w = observation.weather
+    print(w.clouds)
+    talk(w.clouds)
+    pass
+
+def rain():
+    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
+    mgr = owm.weather_manager()
+    observation = mgr.weather_at_place('Auckland,NZ')
+    w = observation.weather
+    print(w.rain)
+    talk(w.rain)
+    pass
+
+
+
+## END OF WEATHER CONFIG
+
 
 def take_command():
     opt = input('Would you like to type your command (y/n)?: ')
@@ -115,6 +214,30 @@ def run_hive():
         talk('You are,,,. ' + har + 'Thats Great,,, ' + name + 'Have,a great Day!')
 
 
+
+
+
+    ## WEATHER CONFIG COMMANDS
+
+    elif 'current weather' in command:
+        newweather()
+    elif 'current wind' in command:
+        windw()
+    elif 'current rain' in command:
+        rainw()
+    elif 'current temp' in command:
+        tempw()
+    elif 'cloud' in command:
+        cloudw()
+
+    ## END OF WEATHER CONFIG COMMANDS
+
+
+
+
+
+
+
     elif 'admin override' in command:
         talk('Insufficient Permissions, Request Denied!')
     elif 'status report' in command:
@@ -146,6 +269,9 @@ def run_hive():
         talk('Ok, what is it?')
     elif 'how are you' in command:
         talk('I am Great! ,, How are you!?')
+        har = input('How are you?: ')
+        print('Thats Good!')
+
     elif 'you still there' in command:
         talk('Yes Sir, i am ready for your command!')
     elif 'who are you' in command:
@@ -155,9 +281,10 @@ def run_hive():
         har = input('How are you?: ')
         talk('You are,,,. ' + har + 'Thats Great,,, ' + 'Have,a great Day!')
     elif 'version' in command:
-        talk('I am currently running on Version 0.1.5 as of Monday March 22nd 7:05PM')
+        talk('I am currently running on Version 1.0.0 as of Monday March 22nd 7:35PM')
     else:
         print('Please say the command again.')
+        talk('Invalid Command!')
         input('Please Type Your Command: ')
         take_command()
 
