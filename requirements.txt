@@ -7,3 +7,8 @@ pip install pyjokes
 pip install math
 pip install vosk
 pip install rasa
+pip install requests
+pip install owm
+pip install rasa
+pip install vosk
+pip install wx
