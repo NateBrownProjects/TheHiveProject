@@ -1,32 +1,3 @@
-# H.I.V.E V.0.1.5 BETA: Home-Assistant Intergrated Virtual Environment
-# #VIEW THE HIVE PROJECT AT HTTPS://natebrownprojects.github.io/TheHiveProject/
-# Copyright: Nate Brown Projects 2021 / Nate Brown 2021 / TheHiveProjectNZ 2021
-import speech_recognition as sr
-import pyttsx3
-import pywhatkit
-import datetime
-import math
-from datetime import timedelta
-import wikipedia
-import pyjokes
-import vosk
-import rasa
-import wx
-from pyttsx3 import Engine
-
-listener = sr.Recognizer()
-engine: Engine = pyttsx3.init()
-voices = engine.getProperty('voices')
-engine.setProperty('voice', voices[0]  .id)
-def talk(text):
-    engine.say(text)
-    engine.runAndWait()
-talk('Systems Loading, Welcome to the HIVE.')
-talk('How, can i help, you Sir?')
-print('Communication Log:')
-
-def take_command():
-    opt = input('Would you like to type your command (y/n)?: ')
 # H.I.V.E V.1.0.0 : Home-Assistant Intergrated Virtual Environment
 # #VIEW THE HIVE PROJECT AT HTTPS://natebrownprojects.github.io/TheHiveProject/
 # Copyright: Nate Brown Projects 2021 / Nate Brown 2021 / TheHiveProjectNZ 2021
@@ -44,6 +15,9 @@ import requests
 from pyowm import OWM
 from pyowm.utils import config
 from pyowm.utils import timestamps
+import rasa
+import vosk
+import wx
 
 
 listener = sr.Recognizer()
@@ -281,7 +255,7 @@ def run_hive():
         har = input('How are you?: ')
         talk('You are,,,. ' + har + 'Thats Great,,, ' + 'Have,a great Day!')
     elif 'version' in command:
-        talk('I am currently running on Version 1.0.0 as of Monday March 22nd 7:35PM')
+        talk('I am currently running on Version 1.0.0 as of Monday March 22nd 7:32PM')
     else:
         print('Please say the command again.')
         talk('Invalid Command!')
