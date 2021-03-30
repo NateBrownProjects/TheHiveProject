@@ -1,4 +1,4 @@
-# H.I.V.E: 0.1.5 BETA #
+# H.I.V.E: 1.0.0 !! #
 Home-Assistant Intergrated Virtual Enviroment
 https://natebrownprojects.github.io/TheHiveProject/
 
@@ -21,7 +21,7 @@ Then Create the VENV:
 
 MacOS/Linux: ```source TheHiveProject/bin/activate```
 
-Windows: ``` TheHiveProject\Scripts\activate```
+Windows: ``` TheHiveProject/Scripts/activate```
 
 
 ## Setup Step 2
@@ -46,5 +46,6 @@ Please note that this is a very basic Assistant and will be developed heavily ov
 - Play... 
 - Whats the Date today?
 - Manually Type in your Commands
-- CAN NOW USE CALCULATOR using the command: "calculator"
+- Use Calculator using the command: "calculator"
+- CAN NOW ASK WEATHER!: "weather, rain, wind, temprature, cloud"
 
