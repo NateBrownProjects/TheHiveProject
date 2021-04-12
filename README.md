@@ -1,4 +1,4 @@
-# H.I.V.E: 1.0.0 !! #
+# H.I.V.E: 1.0.1 #
 Home-Assistant Intergrated Virtual Enviroment
 https://natebrownprojects.github.io/TheHiveProject/
 
@@ -47,5 +47,5 @@ Please note that this is a very basic Assistant and will be developed heavily ov
 - Whats the Date today?
 - Manually Type in your Commands
 - Use Calculator using the command: "calculator"
-- CAN NOW ASK WEATHER!: "weather, rain, wind, temprature, cloud"
+- Weather: "weather, rain, wind, temprature, cloud"
 
