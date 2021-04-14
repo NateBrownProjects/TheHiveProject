@@ -5,7 +5,9 @@ https://natebrownprojects.github.io/TheHiveProject/
 ## Setup Step 1
 Clone this repository using the following command:
 ``` cd Documents```
-``` sudo git clone https://github.com/NateBrownProjects/TheHiveProject```
+``` mkdir hive ```
+``` cd hive ```
+``` sudo git clone https://github.com/NateBrownProjects/TheHiveProject.git```
 
 Then enter the repository by using the following command:
 ```cd TheHiveProject/```
@@ -34,7 +36,7 @@ To Run H.I.V.E:
 
 
 
-Please note that this is a very basic Assistant and will be developed heavily over 
+Please note that this is a very basic Assistant and will be developed heavily over the months
 ## Commands you can use! ##
 
 - Tell me a joke!
@@ -49,3 +51,9 @@ Please note that this is a very basic Assistant and will be developed heavily ov
 - Use Calculator using the command: "calculator"
 - Weather: "weather, rain, wind, temprature, cloud"
 
+
+## UPDATING ##
+
+### To update, use the following commands ##
+``` cd hive/TheHiveProject ```
+``` git pull ```
