@@ -1,5 +1,5 @@
-# H.I.V.E V.1.0.0 : Home-Assistant Intergrated Virtual Environment
-# #VIEW THE HIVE PROJECT AT HTTPS://natebrownprojects.github.io/TheHiveProject/
+# H.I.V.E V.1.0.2 BETA : Home-Assistant Integrated Virtual Environment
+# #VIEW THE HIVE PROJECT AT HTTPS://NateBrownProjects.GitHub.io/TheHiveProject/
 # Copyright: Nate Brown Projects 2021 / Nate Brown 2021 / TheHiveProjectNZ 2021
 import speech_recognition as sr
 import pyttsx3
@@ -15,21 +15,18 @@ import requests
 from pyowm import OWM
 from pyowm.utils import config
 from pyowm.utils import timestamps
-import rasa
-import vosk
-import wx
 
 
 listener = sr.Recognizer()
 engine: Engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0]  .id)
-
+version = '1.0.1'
 ## DO NOT EDIT!!! ---------
 def talk(text):
     engine.say(text)
     engine.runAndWait()
-talk('Systems Loading, Welcome to the HIVE.')
+talk('Systems Loading, Welcome to HIVE, Version, ' + version)
 talk('How, can i help, you Sir?')
 print('Communication Log:')
 
@@ -97,9 +94,12 @@ def rain():
 ## END OF WEATHER CONFIG
 
 
+
 def take_command():
+
     opt = input('Would you like to type your command (y/n)?: ')
     if opt.lower() == "y":
+
         return input("Please type your command: ").lower()
     if opt.lower() == "n":
         print('Ok, Please speak into the Mic.')
@@ -178,17 +178,12 @@ def run_hive():
         print(math.pi)
     elif 'joke' in command:
         talk(pyjokes.get_joke())
-    elif 'open project 65' in command:
-        talk('Access Denied')
     elif 'hi' in command:
         talk('Hello, i dont know you. Whats your name')
         name = input('Whats your name?: ')
         talk('Hi, ' + name + 'How are you?')
         har = input('How are you?')
         talk('You are,,,. ' + har + 'Thats Great,,, ' + name + 'Have,a great Day!')
-
-
-
 
 
     ## WEATHER CONFIG COMMANDS
@@ -205,12 +200,6 @@ def run_hive():
         cloudw()
 
     ## END OF WEATHER CONFIG COMMANDS
-
-
-
-
-
-
 
     elif 'admin override' in command:
         talk('Insufficient Permissions, Request Denied!')
@@ -255,7 +244,7 @@ def run_hive():
         har = input('How are you?: ')
         talk('You are,,,. ' + har + 'Thats Great,,, ' + 'Have,a great Day!')
     elif 'version' in command:
-        talk('I am currently running on Version 1.0.0 as of Monday March 22nd 7:32PM')
+        talk('I am currently running on Version 1.0.0 as of Monday March 22nd 7:35PM')
     else:
         print('Please say the command again.')
         talk('Invalid Command!')
