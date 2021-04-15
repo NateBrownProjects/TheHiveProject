@@ -13,4 +13,4 @@ pip install rasa
 pip install vosk
 pip install wx
 sudo pip3 install virtualenv
-virtualenv TheHiveProject/bin/activate
+virtualenv TheHiveProject
