@@ -21,7 +21,7 @@ listener = sr.Recognizer()
 engine: Engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0]  .id)
-version = '1.0.1'
+version = '1.0.2 BETA'
 ## DO NOT EDIT!!! ---------
 def talk(text):
     engine.say(text)
