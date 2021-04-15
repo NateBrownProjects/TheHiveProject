@@ -32,7 +32,7 @@ Then, install all requirements by using the following command:
 ```"pip install -r requirements.txt"```
 
 To Run H.I.V.E:
-```python hive.py```
+```sh hive.sh```
 
 
 
