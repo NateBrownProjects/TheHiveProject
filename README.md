@@ -1,4 +1,4 @@
-# H.I.V.E: 1.0.1 #
+# H.I.V.E: 1.0.2 BETA #
 Home-Assistant Intergrated Virtual Enviroment
 https://natebrownprojects.github.io/TheHiveProject/
 
@@ -11,7 +11,9 @@ Clone this repository using the following command:
 
 Then enter the repository by using the following command:
 ```cd TheHiveProject/```
-
+## AUTOMATIC SETUP:
+To automaticlly setup H.I.V.E, just simply type the following command:
+``` sh setup.sh ```  
 Then setup a Python Virtual Environment by using the following command:
 ```pip install virtualenv```
 
