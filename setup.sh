@@ -1,5 +1,6 @@
 sudo pip3 install virtualenv
-virtualenv TheHiveProject/bin/activate
+virtualenv TheHiveProject
+source TheHiveProject/bin/activate
 pip install SpeechRecognition
 pip install pyttsx3
 pip install pywhatkit
