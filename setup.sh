@@ -1,11 +1,11 @@
 sudo pip3 install virtualenv
 virtualenv TheHiveProject
 source TheHiveProject/bin/activate
-pip install SpeechRecognition
-pip install pyttsx3
-pip install pywhatkit
-pip install datetime
-pip install wikipedia
-pip install pyjokes
-pip install requests
+pip3 install SpeechRecognition
+pip3 install pyttsx3
+pip3 install pywhatkit
+pip3 install datetime
+pip3 install wikipedia
+pip3 install pyjokes
+pip3 install requests
 
