@@ -14,7 +14,9 @@ Then enter the repository by using the following command:
 ## AUTOMATIC SETUP:
 To automaticlly setup H.I.V.E, just simply type the following command:
 ``` sh setup.sh ```  
-Then setup a Python Virtual Environment by using the following command:
+
+## MANUAL SETUP:
+Setup a Python Virtual Environment by using the following command:
 ```pip install virtualenv```
 
 
