@@ -2,6 +2,7 @@
 Home-Assistant Intergrated Virtual Enviroment
 https://natebrownprojects.github.io/TheHiveProject/
 
+RELEASE NOTES ARE NOW AVAILABLE!
 ## Setup Step 1
 Clone this repository using the following command:
 ``` cd Documents```
