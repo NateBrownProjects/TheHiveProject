@@ -1,4 +1,4 @@
-# H.I.V.E: 1.0.2 BETA #
+# H.I.V.E: 1.0.3 BETA #
 Home-Assistant Intergrated Virtual Enviroment
 https://natebrownprojects.github.io/TheHiveProject/
 
