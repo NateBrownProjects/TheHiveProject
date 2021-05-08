@@ -1,3 +1,5 @@
+pip3 install figlet
+figlet Installing H.I.V.E -c -k
 sudo pip3 install virtualenv
 virtualenv TheHiveProject
 source TheHiveProject/bin/activate
