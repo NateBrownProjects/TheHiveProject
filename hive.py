@@ -1,5 +1,5 @@
 # H.I.V.E V.1.0.3 BETA : Home-Assistant Integrated Virtual Environment
-# #VIEW THE HIVE PROJECT AT HTTPS://NateBrownProjects.GitHub.io/TheHiveProject/
+# VIEW THE HIVE PROJECT AT HTTPS://NateBrownProjects.GitHub.io/TheHiveProject/
 # Copyright: Nate Brown Projects 2021 / Nate Brown 2021 / TheHiveProjectNZ 2021
 import speech_recognition as sr
 import pyttsx3
@@ -15,16 +15,13 @@ import requests
 from pyowm import OWM
 from pyowm.utils import config
 from pyowm.utils import timestamps
-from joke.jokes import *
-from joke.quotes import *
-
 
 ## Engine Settings ##
 listener = sr.Recognizer()
-engine: Engine = pyttsx3.init()
+engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0]  .id)
-version = '1.0.3 BETA'
+version = '1.0.4 BETA'
 
 
 
@@ -103,7 +100,8 @@ def run_hive():
     elif 'what is pi' in command:
         print(math.pi)
     elif 'quote' in command:
-        quote()
+        print('This Feature is coming soon!')
+        talk('This Feature is coming soon!')   
     elif 'open project 65' in command:
         talk('Access Denied')
     elif 'hi' in command:
@@ -122,8 +120,6 @@ def run_hive():
         newweather()
     elif 'current wind' in command:
         windw()
-    elif 'current rain' in command:
-        rainw()
     elif 'current temp' in command:
         tempw()
     elif 'cloud' in command:
@@ -221,12 +217,7 @@ def calculator():
         run_hive()
 
 
-def quote():
-
-    data = stormconsultancy(id=2, format='data')
-    talk(data['quote'])
-    talk(data['author'])
-## WEATHER CONFIG BELOW:
+# WEATHER CONFIG BELOW:
 
 
 

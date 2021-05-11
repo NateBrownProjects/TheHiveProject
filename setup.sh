@@ -22,4 +22,3 @@ pip install pyowm
 chmod +x .hivec.sh
 source .hivec.sh
 echo 'Thank You for downloading H.I.V.E!'
-

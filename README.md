@@ -1,4 +1,4 @@
-# H.I.V.E: 1.0.3 BETA #
+# H.I.V.E: 1.0.4 BETA #
 ![up](https://user-images.githubusercontent.com/80300015/117555900-52d31100-b0b7-11eb-9775-94d4e947fae1.png)
 
 Home-Assistant Intergrated Virtual Enviroment
@@ -64,3 +64,10 @@ Please note that this is a very basic Assistant and will be developed heavily ov
 ### To update, use the following commands ##
 ``` cd hive/TheHiveProject ```
 ``` git pull ```
+
+# USAGE
+## TO use H.I.V.E, there are 2 ways to load and run H.I.V.E.
+### 1st, ```sh hive.sh```
+### 2nd, ```hive``` To use this, you must have V.1.0.4 BETA or later. If this doesnt work for you then run the 2 following commands.
+###  Command 1. ``` chmod +x .hivec.sh ```
+### Command 2. ``` source .hivec.sh ``` If this still doesnt work, please contact us or open an issue and we'll  be happy to help.
