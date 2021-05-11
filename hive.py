@@ -1,4 +1,4 @@
-# H.I.V.E V.1.0.3 BETA : Home-Assistant Integrated Virtual Environment
+# H.I.V.E V.1.0.4 BETA : Home-Assistant Integrated Virtual Environment
 # VIEW THE HIVE PROJECT AT HTTPS://NateBrownProjects.GitHub.io/TheHiveProject/
 # Copyright: Nate Brown Projects 2021 / Nate Brown 2021 / TheHiveProjectNZ 2021
 import speech_recognition as sr
