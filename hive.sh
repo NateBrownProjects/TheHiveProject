@@ -1,3 +1,3 @@
-figlet H.I.V.E V.1.0.3 -c -k
+figlet H.I.V.E V.1.0.4 -c -k
 git pull
-python hive.py
+python3 hive.py
