@@ -1,6 +1,9 @@
-# H.I.V.E V.1.0.4 BETA : Home-Assistant Integrated Virtual Environment
+# H.I.V.E V.1.0.5 BETA : Home-Assistant Integrated Virtual Environment
 # VIEW THE HIVE PROJECT AT HTTPS://NateBrownProjects.GitHub.io/TheHiveProject/
 # Copyright: Nate Brown Projects 2021 / Nate Brown 2021 / TheHiveProjectNZ 2021
+from platform import version
+from subprocess import run
+from urllib.parse import quote_from_bytes
 import speech_recognition as sr
 import pyttsx3
 import pywhatkit
@@ -15,25 +18,40 @@ import requests
 from pyowm import OWM
 from pyowm.utils import config
 from pyowm.utils import timestamps
-
+import commands
+import var
+import calc
+import weatherhive
+import sys
+import hivelog
+import wolframalpha
+import wfa
 ## Engine Settings ##
 listener = sr.Recognizer()
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0]  .id)
-version = '1.0.4 BETA'
-
+wolframalpha = wolframalpha
 
 
 ## Boot Settings
 def talk(text):
     engine.say(text)
     engine.runAndWait()
-talk('Systems Loading, Welcome to HIVE, Version, ' + version)
-talk('How, can i help, you Sir?')
-print('Communication Log:')
+    talk('Systems Loading, Welcome to ' + var.name + var.version)
+    talk('How, can i help, you Sir?')
+    print('Communication Log:')
 
-# Manual Command Type Settings
+
+def qt():
+    print('WolframAlpha has loaded!')
+    question = input('Question: ')
+    app_id = ('PETG7K-RRQQ6VK8PK')
+    client = wolframalpha.Client(app_id)
+    res = client.query(question)
+    answer = next(res.results).text
+    print(answer)
+
 def take_command():
 
     opt = input('Would you like to type your command (y/n)?: ')
@@ -54,6 +72,13 @@ def take_command():
 
     return command
 
+def exit():
+    talk('Shutting all Hive Systems Down.')
+    talk('Thank you for using hive! Goodbye!')
+    print('Thank you for using H.I.V.E!')
+    exit()
+
+
 
 # Command List & Settings
 def run_hive():
@@ -66,11 +91,22 @@ def run_hive():
         song = command.replace('play', '')
         talk('playing ' + song)
         pywhatkit.playonyt(song)
+
     elif 'time' in command:
         time = datetime.datetime.now().strftime('%I:%M %p')
         talk('Current time is ' + time)
+        print('Current time is ' + time)
     elif 'news' in command:
         print('This feature isnt available yet. Please check back soon.')
+    elif 'question' in command:
+        print('WolframAlpha is now loading!')
+        qt()
+    elif 'help' in command:
+        print('WolframAlpha is now loading!')
+        qt()
+    elif 'save' in command: 
+        hivelog.save()
+    
     elif 'joke' in command:
         res = requests.get(
             'https://icanhazdadjoke.com/',
@@ -86,19 +122,34 @@ def run_hive():
         now = datetime.datetime.now()
         talk("Current date and time : ")
         talk(now.strftime("%d         %m                %Y"))
+        print("Current date and time : ")
+        print(now.strftime("%d/%m/%Y"))
         engine.setProperty("rate", 178)
 
     elif 'calculator' in command:
-        calculator()
+        calc.calculator()
 
     elif 'who is' in command:
         person = command.replace('who is', '')
         info = wikipedia.summary(person, 1, auto_suggest=False)
-
         print(info)
         talk(info)
+    elif 'question' in command:
+        qt()
+    elif 'what is' in command:
+        person = command.replace('what is', '')
+        info = wikipedia.summary(person, 1, auto_suggest=False)
+        print(info)
+        talk(info)
+    elif 'say' + '' in command:
+        talk('')
+        print('')
     elif 'what is pi' in command:
         print(math.pi)
+    elif 'var' in command:
+        print(version)
+    elif 'com' in command:
+        commands.comtest()
     elif 'quote' in command:
         print('This Feature is coming soon!')
         talk('This Feature is coming soon!')   
@@ -114,26 +165,20 @@ def run_hive():
 
 
 
+
     ## WEATHER CONFIG COMMANDS
 
     elif 'current weather' in command:
-        newweather()
+        weatherhive.newweather()
     elif 'current wind' in command:
-        windw()
+        weatherhive.windw()
     elif 'current temp' in command:
-        tempw()
+        weatherhive.tempw()
     elif 'cloud' in command:
-        cloudw()
+        weatherhive.cloudw()
 
     ## END OF WEATHER CONFIG COMMANDS
 
-
-
-
-    elif 'admin override' in command:
-        talk('Insufficient Permissions, Request Denied!')
-    elif 'status report' in command:
-        talk('All Systems Operational Sir!')
 
     elif 'shut down' in command:
         talk('Shutting all Hive Systems Down.')
@@ -172,111 +217,11 @@ def run_hive():
         talk('hello, how are you today?')
         har = input('How are you?: ')
         talk('You are,,,. ' + har + 'Thats Great,,, ' + 'Have,a great Day!')
-    elif 'version' in command:
-        talk('I am currently running on Version 1.0.0 as of Monday March 22nd 7:35PM')
     else:
         print('Please say the command again.')
         talk('Invalid Command!')
         input('Please Type Your Command: ')
         take_command()
-
-def calculator():
-    print('Loading up the H.I.V.E Calculator...')
-    talk('Loading up the HIVE Calculator...')
-    print('H.I.V.E Calculator Successfully loaded!')
-    talk('HIVE Calculator Successfully loaded!')
-    operation = input('''
-            Please type in the math operation you would like to complete:
-            + for addition
-            - for subtraction
-            * for multiplication
-            / for division
-            ''')
-
-    number_1 = int(input('Please enter the first number: '))
-    number_2 = int(input('Please enter the second number: '))
-
-    if operation == '+':
-        print('{} + {} = '.format(number_1, number_2))
-        print(number_1 + number_2)
-
-    elif operation == '-':
-        print('{} - {} = '.format(number_1, number_2))
-        print(number_1 - number_2)
-
-    elif operation == '*':
-        print('{} * {} = '.format(number_1, number_2))
-        print(number_1 * number_2)
-
-    elif operation == '/':
-        print('{} / {} = '.format(number_1, number_2))
-        print(number_1 / number_2)
-
-
-    else:
-        run_hive()
-
-
-# WEATHER CONFIG BELOW:
-
-
-
-
-def newweather():
-    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place('Auckland,NZ')
-    w = observation.weather
-    talk(w.detailed_status)
-    pass
-
-def currentw():
-    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place('Auckland,NZ')
-    w = observation.weather
-    print(w.detailed_status)
-    talk('The current conditions in Auckland:' + w.detailed_status)
-    pass
-def windw():
-    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place('Auckland,NZ')
-    w = observation.weather
-    print(w.wind())
-    pass
-
-def tempw():
-    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place('Auckland,NZ')
-    w = observation.weather
-    print(w.temperature)
-    talk(w.temperature('celsius'))
-
-def cloudw():
-    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place('Auckland,NZ')
-    w = observation.weather
-    print(w.clouds)
-    talk(w.clouds)
-    pass
-
-def rain():
-    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place('Auckland,NZ')
-    w = observation.weather
-    print(w.rain)
-    talk(w.rain)
-    pass
-
-
-
-## END OF WEATHER CONFIG
-
-
 
 while True:
     try:
