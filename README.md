@@ -1,4 +1,4 @@
-# H.I.V.E: 1.0.4 BETA #
+# H.I.V.E: 1.0.5 BETA #
 ![up](https://user-images.githubusercontent.com/80300015/117555900-52d31100-b0b7-11eb-9775-94d4e947fae1.png)
 
 Home-Assistant Intergrated Virtual Enviroment
