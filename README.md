@@ -1,50 +1,13 @@
-# H.I.V.E: DEV 1.0 DEVELOPER REPOSITORY #
-![up](https://user-images.githubusercontent.com/80300015/117555900-52d31100-b0b7-11eb-9775-94d4e947fae1.png)
-
-## PLEASE NOTE THAT THIS REPOSITORY WILL NOT BE UPDATED REGUALLY
+# H.I.V.E: 2.0 BETA #
 Home-Assistant Intergrated Virtual Enviroment
-https://natebrownprojects.github.io/TheHiveProjectDEV/
+http://hive.NateBrown.Tech
+![Copy of logo nbp standard](https://user-images.githubusercontent.com/80300015/119251248-d2a1c500-bbf9-11eb-9053-7e356b2d548c.png)
 
+## DEVELOPER REPOSITORY NOW AVAILABLE!:
+http://dev.natebrown.tech
 RELEASE NOTES ARE NOW AVAILABLE!
-## Setup Step 1
-Clone this repository using the following command:
-``` cd Documents```
-``` mkdir hive ```
-``` cd hive ```
-``` sudo git clone https://github.com/NateBrownProjects/TheHiveProjectDEV.git```
-
-Then enter the repository by using the following command:
-```cd TheHiveProjectDEV/```
-## AUTOMATIC SETUP:
-To automaticlly setup H.I.V.E, just simply type the following command:
-``` sh setup.sh ```  
-
-## MANUAL SETUP:
-Setup a Python Virtual Environment by using the following command:
-```pip install virtualenv```
-
-
-Then Create the VENV:
-```virtualenv TheHiveProjectDEV```
-
-### Then activate the VENV: ###
-
-MacOS/Linux: ```source TheHiveProjectDEV/bin/activate```
-
-Windows: ``` TheHiveProjectDEV/Scripts/activate```
-
-
-## Setup Step 2
-
-Then, install all requirements by using the following command:
-```"pip install -r requirements.txt"```
-
-To Run H.I.V.E:
-```sh hive.sh```
-
-
-
-Please note that this is a very basic Assistant and will be developed heavily over the months
+## PLEASE VISIT OUR DOCS FOR INSTALLATION INSTRUCTIONS.
+http://docs.natebrown.tech
 ## Commands you can use! ##
 
 - Tell me a joke!
@@ -58,17 +21,14 @@ Please note that this is a very basic Assistant and will be developed heavily ov
 - Manually Type in your Commands
 - Use Calculator using the command: "calculator"
 - Weather: "weather, rain, wind, temprature, cloud"
+- Question / help: You can now use question or help, to initiate Wolframalpha where you can get more answers. You must be connected to the internet.
+
+# H.I.V.E for Devs!
+Our Developer repository is now available at <a href="http://dev.natebrown.tech">devs.natebrown.tech</a>
+
+# H.I.V.E +
+The H.I.V.E + Program gives users the chance to work with us on our updates. To apply for the program, please email us at hiveplus@natebrown.tech, and we will give you further instructions. This does not mean you are enrolled in the program. IF you want to be enrolled automaticlly, please visit our Github Sponsors profile. H.I.V.E + includes, early access to releases, working alongside our core developers, free software licenses* and free API's.
+View more info at http://hiveplus.natebrown.tech
 
 
-## UPDATING ##
 
-### To update, use the following commands ##
-``` cd hive/TheHiveProjectDEV ```
-``` git pull ```
-
-# USAGE
-## TO use H.I.V.E, there are 2 ways to load and run H.I.V.E.
-### 1st, ```sh hive.sh```
-### 2nd, ```hive``` To use this, you must have V.1.0.4 BETA or later. If this doesnt work for you then run the 2 following commands.
-###  Command 1. ``` chmod +x .hivec.sh ```
-### Command 2. ``` source .hivec.sh ``` If this still doesnt work, please contact us or open an issue and we'll  be happy to help.# nbp.github.io
