@@ -1,8 +1,8 @@
 pip3 install figlet
 figlet Installing H.I.V.E -c -k
 sudo pip3 install virtualenv
-virtualenv TheHiveProject
-source TheHiveProject/bin/activate
+virtualenv TheHiveProjectDEV
+source TheHiveProjectDEV/bin/activate
 pip3 uninstall SpeechRecognition
 pip3 uninstall pyttsx3
 pip3 uninstall pywhatkit

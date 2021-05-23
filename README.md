@@ -1,8 +1,9 @@
-# H.I.V.E: 1.0.5 BETA #
+# H.I.V.E: DEV 1.0 DEVELOPER REPOSITORY #
 ![up](https://user-images.githubusercontent.com/80300015/117555900-52d31100-b0b7-11eb-9775-94d4e947fae1.png)
 
+## PLEASE NOTE THAT THIS REPOSITORY WILL NOT BE UPDATED REGUALLY
 Home-Assistant Intergrated Virtual Enviroment
-https://natebrownprojects.github.io/TheHiveProject/
+https://natebrownprojects.github.io/TheHiveProjectDEV/
 
 RELEASE NOTES ARE NOW AVAILABLE!
 ## Setup Step 1
@@ -10,10 +11,10 @@ Clone this repository using the following command:
 ``` cd Documents```
 ``` mkdir hive ```
 ``` cd hive ```
-``` sudo git clone https://github.com/NateBrownProjects/TheHiveProject.git```
+``` sudo git clone https://github.com/NateBrownProjects/TheHiveProjectDEV.git```
 
 Then enter the repository by using the following command:
-```cd TheHiveProject/```
+```cd TheHiveProjectDEV/```
 ## AUTOMATIC SETUP:
 To automaticlly setup H.I.V.E, just simply type the following command:
 ``` sh setup.sh ```  
@@ -24,13 +25,13 @@ Setup a Python Virtual Environment by using the following command:
 
 
 Then Create the VENV:
-```virtualenv TheHiveProject```
+```virtualenv TheHiveProjectDEV```
 
 ### Then activate the VENV: ###
 
-MacOS/Linux: ```source TheHiveProject/bin/activate```
+MacOS/Linux: ```source TheHiveProjectDEV/bin/activate```
 
-Windows: ``` TheHiveProject/Scripts/activate```
+Windows: ``` TheHiveProjectDEV/Scripts/activate```
 
 
 ## Setup Step 2
@@ -62,7 +63,7 @@ Please note that this is a very basic Assistant and will be developed heavily ov
 ## UPDATING ##
 
 ### To update, use the following commands ##
-``` cd hive/TheHiveProject ```
+``` cd hive/TheHiveProjectDEV ```
 ``` git pull ```
 
 # USAGE
@@ -70,4 +71,4 @@ Please note that this is a very basic Assistant and will be developed heavily ov
 ### 1st, ```sh hive.sh```
 ### 2nd, ```hive``` To use this, you must have V.1.0.4 BETA or later. If this doesnt work for you then run the 2 following commands.
 ###  Command 1. ``` chmod +x .hivec.sh ```
-### Command 2. ``` source .hivec.sh ``` If this still doesnt work, please contact us or open an issue and we'll  be happy to help.
+### Command 2. ``` source .hivec.sh ``` If this still doesnt work, please contact us or open an issue and we'll  be happy to help.# nbp.github.io
