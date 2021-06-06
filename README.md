@@ -2,7 +2,7 @@
 Home-Assistant Intergrated Virtual Enviroment
 http://hive.NateBrown.Tech
 ![Copy of logo nbp standard](https://user-images.githubusercontent.com/80300015/119251248-d2a1c500-bbf9-11eb-9053-7e356b2d548c.png)
-
+ # Just to announce, we will only be releasing an update every few months. If there is a bug or problem, please do let us know immediatly at issues@natebrown.tech
 ## DEVELOPER REPOSITORY NOW AVAILABLE!:
 http://dev.natebrown.tech
 RELEASE NOTES ARE NOW AVAILABLE!
