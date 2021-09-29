@@ -1,14 +1,13 @@
-pip install SpeechRecognition
-pip install pyttsx3
-pip install pywhatkit
-pip install datetime
-pip install wikipedia
-pip install pyjokes
-pip install math
-pip install vosk
-pip install rasa
-pip install requests
-pip install owm
-pip install rasa
-pip install vosk
-pip install wx
+SpeechRecognition
+pyttsx3
+pywhatkit
+datetime
+wikipedia
+pyjokes
+vosk
+rasa
+requests
+pyowm
+rasa
+vosk
+wxPython
