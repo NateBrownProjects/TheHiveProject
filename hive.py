@@ -16,13 +16,14 @@ from pyowm import OWM
 from pyowm.utils import config
 from pyowm.utils import timestamps
 import commands
-import var
+#import var
 import calc
-import weatherhive
+#import weatherhive
 import sys
-import hivelog
+import hivelog  
 import wolframalpha
-import wfa
+#import wfa
+
 ## Engine Settings ##
 listener = sr.Recognizer()
 engine = pyttsx3.init()
@@ -30,15 +31,13 @@ voices = engine.getProperty('voices')
 engine.setProperty('voice', voices[0]  .id)
 wolframalpha = wolframalpha
 
-
 ## Boot Settings
 def talk(text):
     engine.say(text)
     engine.runAndWait()
-    talk('Systems Loading, Welcome to ' + var.name + var.version)
-    talk('How, can i help, you Sir?')
+    #talk('Systems Loading, Welcome to ' + var.name + var.version)
+    #engine.say('How, can i help, you Sir?')
     print('Communication Log:')
-
 
 def qt():
     print('WolframAlpha has loaded!')
@@ -59,32 +58,27 @@ def qtalk(listener):
     answer = next(res.results).text
     talk(answer)
     print(answer)
+    
 def take_command():
-
     opt = input('Would you like to type your command (y/n)?: ')
     if opt.lower() == "y":
-
         return input("Please type your command: ").lower()
     if opt.lower() == "n":
-        print('Ok, Please speak into the Mic.')
-    try:
         with sr.Microphone() as source:
+            print('Ok, Please speak into the Mic.')
             voice = listener.listen(source)
+        try:
             command = listener.recognize_google(voice)
             command = command.lower()
-
-
-    except:
-        pass
-
+        except:
+            pass
     return command
 
-def exit():
+def exit_hive():
     talk('Shutting all Hive Systems Down.')
     talk('Thank you for using hive! Goodbye!')
     print('Thank you for using H.I.V.E!')
     exit()
-
 
 
 # Command List & Settings
@@ -98,7 +92,6 @@ def run_hive():
         song = command.replace('play', '')
         talk('playing ' + song)
         pywhatkit.playonyt(song)
-
     elif 'qtalk' in command:
         qtalk(listener)
     elif 'news' in command:
@@ -130,10 +123,8 @@ def run_hive():
         print("Current date and time : ")
         print(now.strftime("%d/%m/%Y"))
         engine.setProperty("rate", 178)
-
     elif 'calculator' in command:
         calc.calculator()
-
     elif 'who is' in command:
         person = command.replace('who is', '')
         info = wikipedia.summary(person, 1, auto_suggest=False)
@@ -143,8 +134,8 @@ def run_hive():
         qt()
     elif 'what is pi' in command:
         print(math.pi)
-    elif 'version' in command:
-        print(var.version)
+    #elif 'version' in command:
+    #    print(var.version)
     elif 'quote' in command:
         print('This Feature is coming soon!')
         talk('This Feature is coming soon!')   
@@ -154,13 +145,9 @@ def run_hive():
         talk('Hi, ' + name + 'How are you?')
         har = input('How are you?')
         talk('You are,,,. ' + har + 'Thats Great,,, ' + name + 'Have,a great Day!')
-
-
-
-
-
+    
+    
     ## WEATHER CONFIG COMMANDS
-
     elif 'current weather' in command:
         weatherhive.newweather()
     elif 'current wind' in command:
@@ -169,21 +156,13 @@ def run_hive():
         weatherhive.tempw()
     elif 'cloud' in command:
         weatherhive.cloudw()
-
     ## END OF WEATHER CONFIG COMMANDS
-
+    
 
     elif 'shut down' in command:
-        talk('Shutting all Hive Systems Down.')
-        talk('Thank you for using hive! Goodbye!')
-        print('Thank you for using H.I.V.E!')
-        exit()
-
+        exit_hive()
     elif 'exit' in command:
-        talk('Shutting all Hive Systems Down.')
-        talk('Thank you for using hive! Goodbye!')
-        print('Thank you for using H.I.V.E!')
-        exit()
+        exit_hive()
     elif 'awesome thanks' in command:
         talk('Your, Welcome!')
     elif 'thanks' in command:
@@ -224,4 +203,4 @@ while True:
              'is error continues please open an issue on Github.com/NateBrownProjects/TheHiveProject/Issues. Please refrence ERROR CODE 942. Thank you.')
         print('An Error has occurred, Please reload the System. If '
               'this error continues please open an issue on Github.com/NateBrownProjects/TheHiveProject/Issues.Please refrence ERROR CODE 942. Thank you.')
-        continue
+        #continue
