@@ -1,4 +1,4 @@
-# H.I.V.E V.2.0.1 STABLE : Home-Assistant Integrated Virtual Environment
+# H.I.V.E V.2.0 BETA : Home-Assistant Integrated Virtual Environment
 # VIEW THE HIVE PROJECT AT HTTPS://NateBrownProjects.GitHub.io/TheHiveProject/
 # Copyright: Nate Brown Projects 2021 / Nate Brown 2021 / TheHiveProjectNZ 2021
 import speech_recognition as sr
@@ -16,10 +16,13 @@ from pyowm import OWM
 from pyowm.utils import config
 from pyowm.utils import timestamps
 import commands
+#import var
 import calc
+#import weatherhive
 import sys
 import hivelog  
 import wolframalpha
+#import wfa
 
 ## Engine Settings ##
 listener = sr.Recognizer()
@@ -29,10 +32,13 @@ engine.setProperty('voice', voices[0]  .id)
 wolframalpha = wolframalpha
 
 ## Boot Settings
-def talk(text):
+def talk(text, console=True, consoleText=""):
+    if console:
+        print('\nCommunication Log: ' + text + '\n')
+    elif not console and consoleText:
+        print('Communication Log: ' + consoleText + '\n')
     engine.say(text)
     engine.runAndWait()
-    print('Communication Log:')
 
 def qt():
     print('WolframAlpha has loaded!')
@@ -41,7 +47,6 @@ def qt():
     client = wolframalpha.Client(app_id)
     res = client.query(question)
     answer = next(res.results).text
-    print(answer)
     talk(answer)
 
 def qtalk(listener):
@@ -52,57 +57,7 @@ def qtalk(listener):
     res = client.query(question)
     answer = next(res.results).text
     talk(answer)
-    print(answer)
-
-def newweather():
-    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place('Auckland,NZ')
-    w = observation.weather
-    talk(w.detailed_status)
-    pass
-def currentw():
-    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place('Auckland,NZ')
-    w = observation.weather
-    print(w.detailed_status)
-    talk('The current conditions in Auckland:' + w.detailed_status)
-    pass
-def windw():
-    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place('Auckland,NZ')
-    w = observation.weather
-    print(w.wind())
-    pass
-
-def tempw():
-    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place('Auckland,NZ')
-    w = observation.weather
-    print(w.temperature)
-    talk(w.temperature('celsius'))
-
-def cloudw():
-    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place('Auckland,NZ')
-    w = observation.weather
-    print(w.clouds)
-    talk(w.clouds)
-    pass
-
-def rain():
-    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
-    mgr = owm.weather_manager()
-    observation = mgr.weather_at_place('Auckland,NZ')
-    w = observation.weather
-    print(w.rain)
-    talk(w.rain)
-    pass
-
+    
 def take_command():
     opt = input('Would you like to type your command (y/n)?: ')
     if opt.lower() == "y":
@@ -110,7 +65,6 @@ def take_command():
     if opt.lower() == "n":
         with sr.Microphone() as source:
             print('Ok, Please speak into the Mic.')
-            talk('Ok, Please speak into the Microphone.')
             voice = listener.listen(source)
         try:
             command = listener.recognize_google(voice)
@@ -121,11 +75,8 @@ def take_command():
     return
 
 def exit_hive():
-    talk('Shutting all Hive Systems Down.')
-    talk('Thank you for using hive! Goodbye!')
-    print('Thank you for using H.I.V.E!')
+    talk('Shutting all Hive Systems Down. Thank you for using hive! Goodbye!', False, 'Thank you for using H.I.V.E!')
     exit()
-
 
 # Command List & Settings
 def run_hive():
@@ -136,12 +87,12 @@ def run_hive():
         print('Command: ' + command)
     if 'play' in command:
         song = command.replace('play', '')
-        talk('playing ' + song)
+        talk('Playing ' + song, False)
         pywhatkit.playonyt(song)
     elif 'qtalk' in command:
         qtalk(listener)
     elif 'news' in command:
-        print('This feature isnt available yet. Please check back soon.')
+        talk("This feature isn't available yet. Please check back soon.")
     elif 'question' in command:
         print('WolframAlpha is now loading!')
         qt()
@@ -155,58 +106,49 @@ def run_hive():
         if res.status_code == requests.codes.ok:
             talk(str(res.json()['joke']))
         else:
-            talk('oops!I ran out of jokes')
+            talk('Oops!I ran out of jokes')
     elif 'hey' in command:
-        print('hey there')
+        talk('Hey there!')
     elif 'date' in command:
         now = datetime.datetime.now()
         talk("Current date and time : ")
-        talk(now.strftime("%d         %m                %Y"))
-        print("Current date and time : ")
-        print(now.strftime("%d/%m/%Y"))
+        talk(now.strftime("%d , %m , %Y"), False, now.strftime("%d-%m-%Y"))
         engine.setProperty("rate", 178)
-
-    elif 'time' in command:
-        now = datetime.datetime.now()
-        talk("Current date and time : ")
-        talk(now.strftime("%d         %m                %Y"))
-        print("Current date and time : ")
-        print(now.strftime("%d/%m/%Y"))
-        engine.setProperty("rate", 178)
-
     elif 'calculator' in command:
         calc.calculator()
     elif 'who is' in command:
         person = command.replace('who is', '')
-        info = wikipedia.summary(person, 1, auto_suggest=False)
-        print(info)
+        try:
+            info = wikipedia.summary(person, 1, auto_suggest=False)
+        except:
+            info = "Sorry. I couldn't find any results about that!"
         talk(info)
     elif 'question' in command:
         qt()
     elif 'what is pi' in command:
-        print(math.pi)
+        #print(math.pi)
+        talk("Pi is equal to " + math.pi)
     #elif 'version' in command:
     #    print(var.version)
     elif 'quote' in command:
-        print('This Feature is coming soon!')
         talk('This Feature is coming soon!')   
-    elif 'hi' in command:
-        talk('Hello, i dont know you. Whats your name')
+    elif 'hi' in command or 'hello' in command:
+        talk('Hello, i dont know you. Whats your name?', False)
         name = input('Whats your name?: ')
-        talk('Hi, ' + name + 'How are you?')
-        har = input('How are you?')
-        talk('You are..... ' + har + 'Thats Great... ' + name + 'Have. a. great. Day!')
+        talk('Hi, ' + name + '. How are you?')
+        har = input('How are you?: ')
+        talk('You are ' + har + '. Thats Great ' + name + '. Have,a great Day!',)
     
     
     ## WEATHER CONFIG COMMANDS
     elif 'current weather' in command:
-        newweather()
+        weatherhive.newweather()
     elif 'current wind' in command:
-        windw()
+        weatherhive.windw()
     elif 'current temp' in command:
-        tempw()
+        weatherhive.tempw()
     elif 'cloud' in command:
-        cloudw()
+        weatherhive.cloudw()
     ## END OF WEATHER CONFIG COMMANDS
     
 
@@ -221,39 +163,34 @@ def run_hive():
     elif 'thank you' in command:
         talk('No Problem!')
     elif 'awesome' in command:
-        talk('No Problem, is there anything i can help you with?')
+        talk('No Problem. Is there anything i can help you with?')
     elif 'no' in command:
          talk('ok!')
     elif 'yes' in command:
         talk('Ok, what is it?')
     elif 'how are you' in command:
-        talk('I am Great! ,, How are you!?')
+        talk('I am Great!. How are you?', False)
         input('How are you?: ')
-        print('Thats Good!')
+        talk('Thats Good!')
     elif 'wake up' in command:
-        talk('Yes sir, how can i be of help today?')
+        talk('Yes sir, how can I be of help today?')
     elif 'you still there' in command:
-        talk('Yes Sir, i am ready for your command!')
+        talk('Yes Sir, I am ready for your command!')
     elif 'who are you' in command:
-        talk('My name is Hive. It stands for Home Assistant Intergrated Virtual Environment. I am here to help you with whatever i can')
-    elif 'hello' in command:
-        talk('hello, how are you today?')
-        har = input('How are you?: ')
-        talk('You are,,,. ' + har + 'Thats Great,,, ' + 'Have,a great Day!')
+        talk('My name is Hive. It stands for Home Assistant Intergrated Virtual Environment. I am here to help you with whatever I can.')
     else:
-        print('Please say the command again.')
-        talk('Invalid Command!')
+        talk('Invalid Command!', False, 'Please say the command again.')
         input('Please Type Your Command: ')
         take_command()
 
-talk('Systems Loaded, Welcome to HIVE! Version 2.0.1.Stable . How can i help you today ')
+talk('Systems Loaded, Welcome to HIVE!.\n\nHow can I help you Sir?\n')
 
 while True:
     try:
         run_hive()
     except UnboundLocalError:
         talk('An Error has occurred, Please reload the System. If th'
-             'is error continues please open an issue on Github.com/NateBrownProjects/TheHiveProject/Issues. Thank you.')
+             'is error continues please open an issue on Github.com/NateBrownProjects/TheHiveProject/Issues. Please refrence ERROR CODE 942. Thank you.')
         print('An Error has occurred, Please reload the System. If '
-              'this error continues please open an issue on Github.com/NateBrownProjects/TheHiveProject/Issues. Thank you.')
-        #continue
+              'this error continues please open an issue on Github.com/NateBrownProjects/TheHiveProject/Issues.Please refrence ERROR CODE 942. Thank you.')
+    continue
