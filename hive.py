@@ -1,4 +1,4 @@
-# H.I.V.E V.2.0 BETA : Home-Assistant Integrated Virtual Environment
+# H.I.V.E V.2.0.1 STABLE : Home-Assistant Integrated Virtual Environment
 # VIEW THE HIVE PROJECT AT HTTPS://NateBrownProjects.GitHub.io/TheHiveProject/
 # Copyright: Nate Brown Projects 2021 / Nate Brown 2021 / TheHiveProjectNZ 2021
 import speech_recognition as sr
@@ -16,13 +16,10 @@ from pyowm import OWM
 from pyowm.utils import config
 from pyowm.utils import timestamps
 import commands
-#import var
 import calc
-#import weatherhive
 import sys
 import hivelog  
 import wolframalpha
-#import wfa
 
 ## Engine Settings ##
 listener = sr.Recognizer()
@@ -56,7 +53,56 @@ def qtalk(listener):
     answer = next(res.results).text
     talk(answer)
     print(answer)
-    
+
+def newweather():
+    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
+    mgr = owm.weather_manager()
+    observation = mgr.weather_at_place('Auckland,NZ')
+    w = observation.weather
+    talk(w.detailed_status)
+    pass
+def currentw():
+    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
+    mgr = owm.weather_manager()
+    observation = mgr.weather_at_place('Auckland,NZ')
+    w = observation.weather
+    print(w.detailed_status)
+    talk('The current conditions in Auckland:' + w.detailed_status)
+    pass
+def windw():
+    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
+    mgr = owm.weather_manager()
+    observation = mgr.weather_at_place('Auckland,NZ')
+    w = observation.weather
+    print(w.wind())
+    pass
+
+def tempw():
+    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
+    mgr = owm.weather_manager()
+    observation = mgr.weather_at_place('Auckland,NZ')
+    w = observation.weather
+    print(w.temperature)
+    talk(w.temperature('celsius'))
+
+def cloudw():
+    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
+    mgr = owm.weather_manager()
+    observation = mgr.weather_at_place('Auckland,NZ')
+    w = observation.weather
+    print(w.clouds)
+    talk(w.clouds)
+    pass
+
+def rain():
+    owm = OWM('c315355b9f2f252cf5dbab09eff036ae')
+    mgr = owm.weather_manager()
+    observation = mgr.weather_at_place('Auckland,NZ')
+    w = observation.weather
+    print(w.rain)
+    talk(w.rain)
+    pass
+
 def take_command():
     opt = input('Would you like to type your command (y/n)?: ')
     if opt.lower() == "y":
@@ -64,6 +110,7 @@ def take_command():
     if opt.lower() == "n":
         with sr.Microphone() as source:
             print('Ok, Please speak into the Mic.')
+            talk('Ok, Please speak into the Microphone.')
             voice = listener.listen(source)
         try:
             command = listener.recognize_google(voice)
@@ -118,6 +165,15 @@ def run_hive():
         print("Current date and time : ")
         print(now.strftime("%d/%m/%Y"))
         engine.setProperty("rate", 178)
+
+    elif 'time' in command:
+        now = datetime.datetime.now()
+        talk("Current date and time : ")
+        talk(now.strftime("%d         %m                %Y"))
+        print("Current date and time : ")
+        print(now.strftime("%d/%m/%Y"))
+        engine.setProperty("rate", 178)
+
     elif 'calculator' in command:
         calc.calculator()
     elif 'who is' in command:
@@ -139,18 +195,18 @@ def run_hive():
         name = input('Whats your name?: ')
         talk('Hi, ' + name + 'How are you?')
         har = input('How are you?')
-        talk('You are,,,. ' + har + 'Thats Great,,, ' + name + 'Have,a great Day!')
+        talk('You are..... ' + har + 'Thats Great... ' + name + 'Have. a. great. Day!')
     
     
     ## WEATHER CONFIG COMMANDS
     elif 'current weather' in command:
-        weatherhive.newweather()
+        newweather()
     elif 'current wind' in command:
-        weatherhive.windw()
+        windw()
     elif 'current temp' in command:
-        weatherhive.tempw()
+        tempw()
     elif 'cloud' in command:
-        weatherhive.cloudw()
+        cloudw()
     ## END OF WEATHER CONFIG COMMANDS
     
 
@@ -190,14 +246,14 @@ def run_hive():
         input('Please Type Your Command: ')
         take_command()
 
-talk('Systems Loaded, Welcome to HIVE!. How can i help you Sir?')
+talk('Systems Loaded, Welcome to HIVE! Version 2.0.1.Stable . How can i help you today ')
 
 while True:
     try:
         run_hive()
     except UnboundLocalError:
         talk('An Error has occurred, Please reload the System. If th'
-             'is error continues please open an issue on Github.com/NateBrownProjects/TheHiveProject/Issues. Please refrence ERROR CODE 942. Thank you.')
+             'is error continues please open an issue on Github.com/NateBrownProjects/TheHiveProject/Issues. Thank you.')
         print('An Error has occurred, Please reload the System. If '
-              'this error continues please open an issue on Github.com/NateBrownProjects/TheHiveProject/Issues.Please refrence ERROR CODE 942. Thank you.')
+              'this error continues please open an issue on Github.com/NateBrownProjects/TheHiveProject/Issues. Thank you.')
         #continue
