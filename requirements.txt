@@ -11,3 +11,4 @@ pyowm
 rasa
 vosk
 wxPython
+wolframalpha
