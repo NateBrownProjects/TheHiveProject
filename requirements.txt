@@ -12,3 +12,4 @@ rasa
 vosk
 wxPython
 wolframalpha
+PyAudio
