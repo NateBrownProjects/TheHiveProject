@@ -11,3 +11,5 @@ pyowm
 rasa
 vosk
 wxPython
+wolframalpha
+PyAudio
