@@ -16,7 +16,7 @@ Then setup a Python Virtual Environment by using the following command:
 ```pip install virtualenv```
 
 Then Create the VENV:
-```TheHiveProject```
+```python -m venv TheHiveProject```
 
 ### Then activate the VENV: ###
 
