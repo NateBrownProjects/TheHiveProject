@@ -35,8 +35,6 @@ wolframalpha = wolframalpha
 def talk(text):
     engine.say(text)
     engine.runAndWait()
-    #talk('Systems Loading, Welcome to ' + var.name + var.version)
-    #engine.say('How, can i help, you Sir?')
     print('Communication Log:')
 
 def qt():
@@ -72,7 +70,8 @@ def take_command():
             command = command.lower()
         except:
             pass
-    return command
+        return command
+    return
 
 def exit_hive():
     talk('Shutting all Hive Systems Down.')
@@ -104,12 +103,8 @@ def run_hive():
         qt()
     elif 'save' in command: 
         hivelog.save()
-    
     elif 'joke' in command:
-        res = requests.get(
-            'https://icanhazdadjoke.com/',
-            headers={"Accept": "application/json"}
-        )
+        res = requests.get('https://icanhazdadjoke.com/', headers={"Accept": "application/json"})
         if res.status_code == requests.codes.ok:
             talk(str(res.json()['joke']))
         else:
@@ -164,14 +159,14 @@ def run_hive():
     elif 'exit' in command:
         exit_hive()
     elif 'awesome thanks' in command:
-        talk('Your, Welcome!')
+        talk('Your Welcome!')
     elif 'thanks' in command:
-        talk('Ny Pleasure!')
+        talk('My Pleasure!')
     elif 'thank you' in command:
         talk('No Problem!')
     elif 'awesome' in command:
-        talk('No Problem, is there anything i, can help you, with?')
-    elif ' no' in command:
+        talk('No Problem, is there anything i can help you with?')
+    elif 'no' in command:
          talk('ok!')
     elif 'yes' in command:
         talk('Ok, what is it?')
@@ -194,6 +189,8 @@ def run_hive():
         talk('Invalid Command!')
         input('Please Type Your Command: ')
         take_command()
+
+talk('Systems Loaded, Welcome to HIVE!. How can i help you Sir?')
 
 while True:
     try:
