@@ -1,11 +1,15 @@
-# H.I.V.E V.2.0.1 STABLE : Home-Assistant Integrated Virtual Environment
+#!/usr/bin/env python3.7
+# H.I.V.E V.2.0.2 STABLE : Home-Assistant Integrated Virtual Environment
 # VIEW THE HIVE PROJECT AT HTTPS://NateBrownProjects.GitHub.io/TheHiveProject/
 # Copyright: Nate Brown Projects 2021 / Nate Brown 2021 / TheHiveProjectNZ 2021
 import speech_recognition as sr
+import objc
+#import pywhatkit
 import pyttsx3
-import pywhatkit
 import datetime
 import math
+#from spotify_local import SpotifyLocal
+
 from datetime import timedelta
 import wikipedia
 import pyjokes
@@ -129,10 +133,6 @@ def run_hive():
     if 'hive' in command:
         command = command.replace('hive', '')
         print('Command: ' + command)
-    if 'play' in command:
-        song = command.replace('play', '')
-        talk('Playing ' + song, False)
-        pywhatkit.playonyt(song)
     elif 'qtalk' in command:
         qtalk(listener)
     elif 'news' in command:
@@ -160,6 +160,28 @@ def run_hive():
         engine.setProperty("rate", 178)
     elif 'calculator' in command:
         calc.calculator()
+
+    elif 'note' in command:
+        talk('What would you like to put in the note?')
+        optio = input("What would you like to put write?:")
+        for i in range(10):
+            f = open("notes.txt", "w+")
+            f.write("New Note: " + optio)
+            print('I have added it to your notes!')
+            talk('I have added it to your notes!')
+            run_hive()
+    #elif 'play' in command:
+     #   song = command.replace('play', '')
+      #  talk('Playing ' + song, False)
+       # pywhatkit.playonyt(song)
+    #elif 'search' in command:
+    #    sinput = input("What would you like to search?: ")
+     #   kit.search(sinput)
+    #elif 'terminate' in command:
+     #   pywhatkit.shutdown()
+    #elif 'tutorial' in command:
+     #   tutput = input("What would you like a tutorial on?: ")
+     #   pywhatkit.tutorial_(tutput)
     elif 'who is' in command:
         person = command.replace('who is', '')
         try:
@@ -222,8 +244,8 @@ def run_hive():
         input('Please Type Your Command: ')
         take_command()
 
-talk('Systems Loaded, Welcome to HIVE! Version 2.0.1.Stable.\n\nHow can i help you today?')
-
+talk('Systems Loaded, Welcome to HIVE! Version 2.0.2.Stable.\n\nHow can i help you today? This is a security Notice! Nate Brown Projects, Hive and HiveKit does not collect any data or infomation about you. Thank you.')
+print('This is a security Notice! Nate Brown Projects, H.I.V.E and HiveKit does not collect any data or infomation about you. Thank you.')
 while True:
     try:
         run_hive()
